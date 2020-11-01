@@ -1,0 +1,34 @@
+int light = A0;
+int blue = 8;
+int white = 9;
+int lightVal;
+int d = 250;
+void setup() {
+  // put your setup code here, to run once:
+pinMode(light, INPUT);
+pinMode(blue, OUTPUT);
+pinMode(white, OUTPUT);
+Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+lightVal = analogRead(light);
+Serial.println(lightVal);
+delay(d);
+
+if(lightVal <= 499 && lightVal >= 0)
+{
+  digitalWrite(blue, HIGH);
+  digitalWrite(white, LOW);
+  
+}
+
+
+if(lightVal >= 500 && lightVal <= 1023)
+{
+  digitalWrite(blue, LOW);
+  digitalWrite(white, HIGH);
+  
+}
+}
